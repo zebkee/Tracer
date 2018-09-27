@@ -170,10 +170,11 @@ def Polar(filename,field_info,location,latitude):
 	plt.savefig("PolarContour.png",dpi=100)
 	return
 
-filename = "PS10_"
-field_info = "PS10_AzEl_8mx8m"
-location = "Alice Springs (AUS)"
-latitude = -23.795
+filename = "Sand"
+field_info = "Sandia_AzEl_5mx5m"
+location = "Albuquerque, NM (USA)"
+latitude = +34.96
 
 
 Polar(filename,field_info,location,latitude)
+
