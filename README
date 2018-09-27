@@ -80,7 +80,11 @@ float table2D_1(8,14)
 75.0 0.5571140707 0.568963857789 0.595620474371 0.619859347549 0.649600435835 0.670135894996 0.668123194722 0.663349147038 0.644109598342 0.620032287312 0.584697962988 0.561481937492 0.5617572758 
 90.0 0.630581612889 0.630581612889 0.630581612889 0.630581612889 0.630581612889 0.630581612889 0.630581612889 0.630581612889 0.630581612889 0.630581612889 0.630581612889 0.630581612889 0.630581612889
 
+The example provided in the folder is for Sandia NSTTF field. An additional 4th column in the coordinate csv file represents focal
+length of each mirror. The model assumes focal length = slant range (distance between centre of heliostat to the single receiver aiming point.
+
 Also outputs losses in terms of efficiencies eg. spill efficiency = 1 - spillage loss fraction.
+Fluxmaps are stored in the optical_efficiency_tabulator/Fluxmaps/ folder using the naming convention Azimuth_Zenith.png
 
 Optical efficiency = Cosine Eff * Shading Eff * Reflection Eff * Blocking Eff * Spillage Eff * Absorption Eff
 
