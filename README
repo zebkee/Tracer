@@ -60,3 +60,34 @@ Getting Help, Getting Involved
 Slightly outdated documentation and reference matereial can be found on 
 http://yosefm.github.com/tracer/
 
+In This Fork..
+--------------
+
+An application of the Tracer package to determine the optical efficiency of a heliostat field - flat receiver
+pair at different sun angles. Heliostat field generator is based on Ye's functions.
+
+-> optical_efficiency_tabulator/Tabulator.py    #Remember to specify path of the heliostat coordinate csv file.
+Outputs a 2D table of optical efficiency vs Azimuth (0.0-360.0) and Elevation (0.0-90.0) that is compatible with SolarTherm.
+Eg.
+#1
+float table2D_1(8,14)
+0.0 0.0 30.0 60.0 90.0 120.0 150.0 180.0 210.0 240.0 270.0 300.0 330.0 360.0
+0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 
+15.0 0.155774354267 0.202996011813 0.313238284514 0.419551866402 0.494390411322 0.544046878697 0.542339098532 0.55098608671 0.493723683023 0.413066625269 0.304721001159 0.206771104809 0.154873247078 
+30.0 0.244889531774 0.291442185497 0.389875630527 0.513717567662 0.593301716226 0.649021315179 0.655571408724 0.645324727733 0.60118640413 0.514841676125 0.396162901142 0.288892461746 0.248656850066 
+45.0 0.351706004291 0.386686484756 0.458701105379 0.552629014464 0.640473312261 0.68449558418 0.724660844267 0.68836511139 0.638950987237 0.550683442124 0.462295294281 0.386213175929 0.351852775537 
+60.0 0.467548339599 0.486709382745 0.532619201163 0.602868015779 0.65820305131 0.699433256258 0.708577446256 0.692623753067 0.654939951035 0.601138618143 0.538504841932 0.4820764175 0.470525861712 
+75.0 0.5571140707 0.568963857789 0.595620474371 0.619859347549 0.649600435835 0.670135894996 0.668123194722 0.663349147038 0.644109598342 0.620032287312 0.584697962988 0.561481937492 0.5617572758 
+90.0 0.630581612889 0.630581612889 0.630581612889 0.630581612889 0.630581612889 0.630581612889 0.630581612889 0.630581612889 0.630581612889 0.630581612889 0.630581612889 0.630581612889 0.630581612889
+
+Also outputs losses in terms of efficiencies eg. spill efficiency = 1 - spillage loss fraction.
+
+Optical efficiency = Cosine Eff * Shading Eff * Reflection Eff * Blocking Eff * Spillage Eff * Absorption Eff
+
+Note: Mirror reflection efficiency and Receiver absorption efficiency are constant values determined at the start of the tracing
+and hence are not tabulated.
+
+-> optical_efficiency_tabulator/Polar_Plotting.py
+Based on the output files of Tabulator.py, this script plots the efficiencies in polar coordinates of sun angle (azimuth - elevation)
+and overlays the expected sunpath of a particular latitude. Note: North = Azimuth 0 degrees, South = Azimuth 180 degrees.
+
