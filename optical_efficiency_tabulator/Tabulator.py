@@ -656,9 +656,10 @@ class Hemisphere():
 
 		self.azi_steps = 18 #36
 		self.ele_steps = 9 #8 [-24,24]
+		self.filename = "Sand"
 
 	def tabulate(self):
-		filename = "PS10_"
+		filename = self.filename
 
 
 		self.azi_interval = 360.0/self.azi_steps
@@ -781,21 +782,21 @@ class Hemisphere():
 #Tower Position
 tower_x = 0.0
 tower_y = 0.0
-tower_height = 115.0 #metres
+tower_height = 60.0 #metres
 
-#Heliostat Layout #The csv file is X, Y, Z, focal_length (m)
-helio_file = "PS10_Flipped_Slant.csv" #Flipped to suit the southern hemisphere. Mirror focal length is equal to slant range (ideal)
-helio_w = 12.925
-helio_h = 9.575
+#Heliostat Layout
+helio_file = "/home/admin-u5277975/Tracer/optical_efficiency_tabulator/Sandia_Coordinates.csv"
+helio_w = 6.09
+helio_h = 6.09
 tracking = "AzEl"
 
 #Heliostat Properties
-helio_abs = 0.05
-helio_slope = 1.5e-3 #mrad
+helio_abs = 0.04
+helio_slope = 1.0e-3 #mrad
 
 #Receiver Properties assumed to be blackbody
-recv_width = 8.0
-recv_height = 8.0
+recv_width = 5.0
+recv_height = 5.0
 
 #Precision
 bins = 20 #number of bins on an axis
@@ -810,7 +811,16 @@ ele_steps = 9
 
 
 
-H = Hemisphere(N.array([recv_width,recv_height]),N.array([tower_x,tower_y,tower_height]),helio_file,helio_w=helio_w,helio_h=helio_h,helio_abs=helio_abs,helio_sigmaxy=helio_slope,helio_tracking=tracking,bins=bins,rays_per_run=100000,precision=precision,render=False)
+H = Hemisphere(N.array([recv_width,recv_height]),N.array([tower_x,tower_y,tower_height]),helio_file,helio_w=helio_w,helio_h=helio_h,helio_abs=helio_abs,helio_sigmaxy=helio_slope,helio_tracking=tracking,bins=bins,rays_per_run=50000,precision=precision,render=False)
 H.azi_steps = azi_steps
 H.ele_steps = ele_steps
+H.filename = "Sand"
 H.tabulate()
+
+#heliostat = "/home/admin-u5277975/Tracer/examples/CSIRO_Normal_Base.csv"
+#H = Hemisphere(2.00,N.array([0.93181,0.0011,26.79727]),heliostat,helio_w=1.85,helio_h=2.44,helio_abs=0.10,helio_sigmaxy=1.50e-3,helio_tracking="TiltRoll",bins=100,rays_per_run=100000,precision=1.00,render=False)
+#H.tabulate()
+
+#H = SingleCase(1.69,N.array([0.0,0.0,26.8]),heliostat,helio_w=1.85,helio_h=2.44,helio_abs=0.05,helio_sigmaxy=1.64e-3,helio_tracking="TiltRoll",bins=100,rays_per_run=100000,precision=0.5,render=False,azimuth=0.0,elevation=90.0-41.1)
+#H.run()	
+
